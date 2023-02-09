@@ -12,7 +12,9 @@ import { SmartContracts } from './SmartContract';
 
 import "@near-wallet-selector/modal-ui/styles.css";
 
-window.Buffer = window.Buffer || require("buffer").Buffer;
+import { Buffer } from 'node:buffer';
+
+window.Buffer = window.Buffer || Buffer;
 
 type LoginFormProps = {
     onAddressChanged?: () => void;
