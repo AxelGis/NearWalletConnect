@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Buffer } from "buffer";
 import { setupWalletSelector, WalletSelector } from "@near-wallet-selector/core";
 import { setupModal } from "@near-wallet-selector/modal-ui";
 import { setupNearWallet } from "@near-wallet-selector/near-wallet";
-import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
 
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -11,10 +11,7 @@ import Typography from '@mui/material/Typography';
 import { SmartContracts } from './SmartContract';
 
 import "@near-wallet-selector/modal-ui/styles.css";
-
-import { Buffer } from 'node:buffer';
-
-window.Buffer = window.Buffer || Buffer;
+global.Buffer = Buffer;
 
 type LoginFormProps = {
     onAddressChanged?: () => void;
@@ -41,7 +38,7 @@ export const LoginForm: React.FC<LoginFormProps> = () => {
     const setSelector = async() => {
         const walletSelector = await setupWalletSelector({
             network: "testnet",
-            modules: [setupNearWallet(),setupMyNearWallet()],
+            modules: [setupNearWallet()],
         });
         setWalletSelector(walletSelector);
 
