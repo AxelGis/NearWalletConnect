@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Buffer } from "buffer";
 import { connect, keyStores, utils, Contract } from "near-api-js";
 import { setupWalletSelector } from "@near-wallet-selector/core";
 import { setupNearWallet } from "@near-wallet-selector/near-wallet";
@@ -9,7 +8,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-global.Buffer = Buffer;
 
 type SmartContractProps = {
     accountId: string;
